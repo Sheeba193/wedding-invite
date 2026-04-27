@@ -1,0 +1,117 @@
+/* WRAPPER */
+.curtain-wrapper {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  background: #2b0a12;
+}
+
+/* CENTER TEXT */
+.curtain-center {
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fbe4ea;
+  text-align: center;
+}
+
+.curtain-center h1 {
+  font-size: 3rem;
+  font-family: "Great Vibes", cursive;
+}
+
+.curtain-center p {
+  margin-top: 10px;
+  opacity: 0.8;
+}
+
+/* BODY */
+.curtainBody {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+/* CONTAINERS */
+.curtainContainer {
+  position: absolute;
+  display: flex;
+  top: -10%;
+  width: 100%;
+  height: 110%;
+  overflow: hidden;
+  transition: transform 2.5s ease;
+}
+
+/* LEFT */
+.leftCurtain {
+  transform-origin: -120% top;
+  justify-content: flex-start;
+  transform: translateX(-5vw);
+}
+
+/* RIGHT */
+.rightCurtain {
+  transform-origin: 120% top;
+  justify-content: flex-end;
+  transform: translateX(15vw);
+}
+
+/* OPEN STATE */
+.curtainBody.open .leftCurtain {
+  transform: translateX(-150vw) scaleX(0);
+}
+
+.curtainBody.open .rightCurtain {
+  transform: translateX(150vw) scaleX(0);
+}
+
+/* STRIPS */
+.unCurtain {
+  display: inline-block;
+  width: 15vw;
+  height: 120vh;
+
+  background: repeating-linear-gradient(
+    to left,
+    #6b0f1a 4vw,
+    #4a0b12 10vw,
+    #8b1e3f 15vw
+  );
+
+  transform-origin: 0 0%;
+  transform: rotate(3deg);
+  animation: swing 2s ease-in-out infinite;
+}
+
+/* OVERLAP */
+.unCurtain:not(:first-child) {
+  margin-left: -10vw;
+}
+
+/* SWING */
+@keyframes swing {
+  50% {
+    transform: rotate(-3deg);
+  }
+}
+
+/* OVERLAY */
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, transparent, black);
+  transition: opacity 2s ease;
+}
+
+.curtainBody.open .overlay {
+  opacity: 0;
+}

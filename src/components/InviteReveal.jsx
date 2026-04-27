@@ -1,24 +1,34 @@
 export default function InviteReveal() {
   return (
-    <div className="h-screen flex flex-col items-center justify-center bg-cream text-center px-6">
+    <div className="min-h-screen flex items-center justify-center px-6 bg-[var(--color-surface)] text-center">
       
-      <h2 className="text-3xl md:text-5xl font-serif text-burgundy mb-6">
-        Faith Chepkirui
-      </h2>
+      <div className="glass p-10 max-w-xl w-full animate-fade-up">
+        
+        <p className="script text-3xl text-[var(--color-highlight)] mb-4">
+          Together with their families
+        </p>
 
-      <p className="text-lg text-gray-600 mb-4">and</p>
+        <h2 className="text-4xl md:text-5xl font-semibold text-[var(--color-primary)]">
+          Faith Chepkirui
+        </h2>
 
-      <h2 className="text-3xl md:text-5xl font-serif text-burgundy mb-8">
-        Benard Langat
-      </h2>
+        <p className="my-3 text-muted-foreground">and</p>
 
-      <p className="text-xl text-rose mb-4">
-        joyfully invite you to their wedding
-      </p>
+        <h2 className="text-4xl md:text-5xl font-semibold text-[var(--color-primary)] mb-6">
+          Benard Langat
+        </h2>
 
-      <p className="text-md text-gray-500">
-        Dansed, Kericho
-      </p>
+        <div className="divider"></div>
+
+        <p className="text-lg text-[var(--color-muted-foreground)] mt-4">
+          joyfully invite you to celebrate their wedding
+        </p>
+
+        <p className="mt-6 text-sm tracking-wide text-[var(--color-highlight)]">
+          Dansed, Kericho
+        </p>
+
+      </div>
     </div>
   );
 }

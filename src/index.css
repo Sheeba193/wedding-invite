@@ -1,5 +1,124 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap');
+@import "tailwindcss";
 
-body {
-  font-family: 'Playfair Display', serif;
+/* 🌸 GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Great+Vibes&display=swap');
+
+@theme {
+  /* 🌸 BASE */
+  --color-background: #fff7f8;
+  --color-foreground: #2b1f24;
+
+  --color-card: #ffffff;
+
+  /* 🌹 PRIMARY */
+  --color-primary: #6b0f1a; /* deep burgundy */
+  --color-primary-foreground: #ffffff;
+
+  /* 🌹 SECONDARY */
+  --color-secondary: #f3d6dc; /* rustic rose */
+  --color-secondary-foreground: #6b0f1a;
+
+  /* 🌸 MUTED */
+  --color-muted: #f7e9ec;
+  --color-muted-foreground: #7a6a70;
+
+  /* 🌸 BORDER */
+  --color-border: #e6c9cf;
+
+  --radius: 1rem;
+
+  /* 🌹 ACCENTS */
+  --color-highlight: #b76e79;
+  --color-surface: #fffdf9;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: linear-gradient(
+      to bottom,
+      #fff7f8,
+      #fbe4ea
+    );
+    color: var(--color-foreground);
+    font-family: "Playfair Display", serif;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3 {
+    font-family: "Playfair Display", serif;
+  }
+
+  .script {
+    font-family: "Great Vibes", cursive;
+  }
+}
+
+@layer components {
+  /* 🌹 GLASS */
+  .glass {
+    background-color: color-mix(in srgb, #ffffff 85%, transparent);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+  }
+
+  /* ✨ SOFT GLOW TEXT */
+  .glow-text {
+    text-shadow:
+      0 0 10px color-mix(in srgb, var(--color-primary) 30%, transparent),
+      0 0 20px color-mix(in srgb, var(--color-primary) 20%, transparent);
+  }
+
+  /* 🎭 CURTAIN TEXTURE */
+  .curtain {
+    background: linear-gradient(
+        to right,
+        #5a0d16,
+        #6b0f1a 30%,
+        #4a0b12 60%,
+        #6b0f1a
+      );
+    box-shadow:
+      inset -10px 0 30px rgba(0,0,0,0.4),
+      inset 10px 0 30px rgba(0,0,0,0.4);
+  }
+
+  /* ✨ GOLD LINE */
+  .divider {
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #b76e79, transparent);
+    margin: 1rem auto;
+  }
+}
+
+@layer utilities {
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-up {
+    animation: fade-up 1s ease-out both;
+  }
+
+  @keyframes curtain-wave {
+    0% { transform: skewX(0deg); }
+    50% { transform: skewX(2deg); }
+    100% { transform: skewX(0deg); }
+  }
+
+  .curtain-animate {
+    animation: curtain-wave 3s ease-in-out infinite;
+  }
 }
