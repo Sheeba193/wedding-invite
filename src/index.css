@@ -1,124 +1,91 @@
 @import "tailwindcss";
-
-/* 🌸 GOOGLE FONTS */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Great+Vibes&display=swap');
 
 @theme {
   /* 🌸 BASE */
-  --color-background: #fff7f8;
-  --color-foreground: #2b1f24;
+  --color-background: #1c0809; /* deep burgundy base */
+  --color-foreground: #f3f3f3; /* soft white */
 
-  --color-card: #ffffff;
+  --color-card: #2f1112; /* dark rose surface */
 
-  /* 🌹 PRIMARY */
-  --color-primary: #6b0f1a; /* deep burgundy */
-  --color-primary-foreground: #ffffff;
+  /* 🌹 PRIMARY (burgundy family) */
+  --color-primary: #1c0809;
+  --color-primary-foreground: #f3f3f3;
 
-  /* 🌹 SECONDARY */
-  --color-secondary: #f3d6dc; /* rustic rose */
-  --color-secondary-foreground: #6b0f1a;
+  /* 🌸 SECONDARY (rose tones) */
+  --color-secondary: #9c6a69;
+  --color-secondary-foreground: #f3f3f3;
 
-  /* 🌸 MUTED */
-  --color-muted: #f7e9ec;
-  --color-muted-foreground: #7a6a70;
+  /* 🌸 MUTED (beige family) */
+  --color-muted: #8a5656;
+  --color-muted-foreground: #c3ab95;
 
   /* 🌸 BORDER */
-  --color-border: #e6c9cf;
-
-  --radius: 1rem;
+  --color-border: rgba(243, 243, 243, 0.12);
 
   /* 🌹 ACCENTS */
-  --color-highlight: #b76e79;
-  --color-surface: #fffdf9;
+  --color-highlight: #c3ab95; /* beige-muted glow */
+  --color-surface: #2f1112;
+
+  /* ✨ UI SETTINGS */
+  --radius: 1rem;
+
+  /* 🌸 WEDDING ACCENT GRADIENT HELPERS */
+  --color-glow: rgba(156, 106, 105, 0.25);
 }
 
 @layer base {
+
   html {
     scroll-behavior: smooth;
-  }
-
-  body {
-    background: linear-gradient(
-      to bottom,
-      #fff7f8,
-      #fbe4ea
-    );
-    color: var(--color-foreground);
-    font-family: "Playfair Display", serif;
-    line-height: 1.6;
-  }
-
-  h1, h2, h3 {
-    font-family: "Playfair Display", serif;
   }
 
   .script {
     font-family: "Great Vibes", cursive;
   }
-}
-
-@layer components {
-  /* 🌹 GLASS */
-  .glass {
-    background-color: color-mix(in srgb, #ffffff 85%, transparent);
-    backdrop-filter: blur(12px);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--color-background);
+    background-color: var(--color-muted);
+    color: var(--color-foreground)  ;
+    font-family: "Playfair Display", serif;
+    overflow-x: hidden;
   }
 
-  /* ✨ SOFT GLOW TEXT */
-  .glow-text {
-    text-shadow:
-      0 0 10px color-mix(in srgb, var(--color-primary) 30%, transparent),
-      0 0 20px color-mix(in srgb, var(--color-primary) 20%, transparent);
-  }
-
-  /* 🎭 CURTAIN TEXTURE */
-  .curtain {
-    background: linear-gradient(
-        to right,
-        #5a0d16,
-        #6b0f1a 30%,
-        #4a0b12 60%,
-        #6b0f1a
-      );
-    box-shadow:
-      inset -10px 0 30px rgba(0,0,0,0.4),
-      inset 10px 0 30px rgba(0,0,0,0.4);
-  }
-
-  /* ✨ GOLD LINE */
-  .divider {
-    width: 80px;
-    height: 2px;
-    background: linear-gradient(to right, transparent, #b76e79, transparent);
-    margin: 1rem auto;
+  
+  h1, h2, h3, p {
+    font-family: "Playfair Display", serif;
+    color: var(--color-primary);
   }
 }
 
-@layer utilities {
-  @keyframes fade-up {
-    from {
-      opacity: 0;
-      transform: translateY(40px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+/* GLOBAL WEDDING SPACING SYSTEM */
+.section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1.5rem;
+  text-align: center;
+}
 
-  .animate-fade-up {
-    animation: fade-up 1s ease-out both;
-  }
+/* SOFT BACKGROUND GLOW */
+.glow-bg {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: rgba(208, 123, 136, 0.15);
+  filter: blur(120px);
+  border-radius: 50%;
+  z-index: 0;
+}
 
-  @keyframes curtain-wave {
-    0% { transform: skewX(0deg); }
-    50% { transform: skewX(2deg); }
-    100% { transform: skewX(0deg); }
-  }
-
-  .curtain-animate {
-    animation: curtain-wave 3s ease-in-out infinite;
-  }
+/* GLASS BUT SOFTER */
+.glass {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 20px;
 }

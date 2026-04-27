@@ -9,7 +9,7 @@ export default function CurtainIntro({ onOpen }) {
 
     setTimeout(() => {
       onOpen();
-    }, 2500);
+    }, 1000);
   };
 
   return (
