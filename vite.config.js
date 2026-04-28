@@ -1,18 +1,13 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+import path from 'path'
 
 // https://vite.dev/config/
-export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-  theme: {
-    extend: {
-      colors: {
-        burgundy: "#6B0F1A",
-        rose: "#B76E79",
-        beige: "#F5F5DC",
-        cream: "#FFFDF7"
-      }
-    },
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+  resolve: {
+    alias: {
+    "@": path.resolve(__dirname, "./src"),    },
   },
-  plugins: [],
-}
+})

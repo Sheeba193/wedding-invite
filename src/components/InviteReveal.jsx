@@ -1,49 +1,98 @@
+import { useState } from "react";
+import confetti from "canvas-confetti";
 
 export default function InviteReveal() {
+  const [opened, setOpened] = useState(false);
+  const [showScratch, setShowScratch] = useState(false);
+
+  const handleAccept = () => {
+    setOpened(true);
+
+    // 🎉 CENTER CONFETTI BURST
+    confetti({
+      particleCount: 200,
+      spread: 120,
+      origin: { y: 0.6 },
+    });
+
+    // extra cinematic burst
+    setTimeout(() => {
+      confetti({
+        particleCount: 120,
+        spread: 160,
+        origin: { x: 0.5, y: 0.4 },
+      });
+    }, 300);
+
+    // ⏳ transition to next page after animation
+    setTimeout(() => {
+      setShowScratch(true);
+    }, 1800);
+  };
+
   return (
-    <div className="section relative">
+    
+    <section className="section relative min-h-screen flex items-center justify-center overflow-hidden">
 
-      {/* BACKGROUND GLOW */}
-      <div className="glow-bg"></div>
+      <div className="petals"></div>
 
-      {/* CONTENT */}
-      <div className="relative z-10 max-w-md w-full">
+      <div className="relative flex flex-col items-center justify-center text-center gap-6">
 
-        <p className="script text-3xl mb-6">
-          Together with their families
-        </p>
+        {/* 💌 ENVELOPE */}
+        {!showScratch && (
+          <div className={`envelope transition-all duration-700 ${opened ? "opacity-0 scale-95" : "opacity-100 scale-100"}`}>
 
-        {/* IMAGE */}
-        {/* <div className="width-50% height-50% flex justify-center mb-6">
-          <img
-            src={couple}
-            className="w-40 h-40 object-cover rounded-full border-2 border-[#b76e79]"
-          />
-        </div> */}
+            {!opened && (
+              <>
+                <h1 className="script mb-4">
+                  You're Invited!
+                </h1>
 
-        {/* NAMES */}
-        <h1 className="text-4xl font-semibold">
-          Faith Chepkirui
-        </h1>
+                <h2 className="names">
+                  Faith Chepkirui
+                </h2>
 
-        <p className="text-[#b76e79] tracking-[0.4em] my-3 text-xs">
-          AND
-        </p>
+                <h2 className="and">
+                  and
+                </h2>
+                <h2 className="names">
+                  Benard Langat
+                </h2>
+                <h2 className="invite-text">
+                  will be getting married this June
+                </h2>
+                <h2 className="location">
+                  at the beautiful environments of Dansen in Kericho
+                </h2>
+                <h2 className="invite-text">
+                  Join us for the celebration of love and laughter!
+                </h2>
 
-        <h1 className="text-4xl font-semibold mb-6">
-          Benard Langat
-        </h1>
+                <button onClick={handleAccept} className="invite-btn">
+                  Accept Invitation 💌
+                </button>
+              </>
+            )}
 
-        {/* INVITE TEXT */}
-        <p className="text-lg opacity-90 mb-4">
-          You are warmly invited to celebrate our wedding
-        </p>
+          </div>
+        )}
 
-        <p className="text-xs tracking-[0.4em] text-[#b76e79]">
-          Dansed, Kericho
-        </p>
+        {/* ✨ SCRATCH PAGE */}
+        {showScratch && (
+          <div className="scratch-page fade-in">
+            <h2 className="script text-2xl mb-6">
+              SAVE THE DATE
+            </h2>
+
+            <div className="scratch-card">
+             15th December 2026
+            </div>
+          </div>
+        )}
 
       </div>
-    </div>
+
+    </section>
+
   );
 }
