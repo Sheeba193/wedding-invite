@@ -45,7 +45,7 @@ export default function InviteReveal() {
             {!opened && (
               <>
                 <h1 className="script mb-4">
-                  You're Invited!
+                  Join us for the celebration of love and laughter!
                 </h1>
 
                 <h2 className="names">
@@ -59,14 +59,9 @@ export default function InviteReveal() {
                   Benard Langat
                 </h2>
                 <h2 className="invite-text">
-                  will be getting married this June
+                  are getting married!
                 </h2>
-                <h2 className="location">
-                  at the beautiful environments of Dansen in Kericho
-                </h2>
-                <h2 className="invite-text">
-                  Join us for the celebration of love and laughter!
-                </h2>
+                
 
                 <button onClick={handleAccept} className="invite-btn">
                   Accept Invitation 💌
